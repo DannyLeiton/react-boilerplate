@@ -1,0 +1,20 @@
+.Card-section {
+    margin: 1em;
+    width: 200px;
+    height: 150px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-top: 25px;
+    border-style: dotted;
+    border-width: 2px;
+  }
+  
+  .Card-fonts {
+    display: inline-block;
+    margin-left: 10;
+  }
+  
+  .Card-name {
+    font-size: 1.25em;
+    font-weight: bold;
+  }

@@ -1,0 +1,17 @@
+.Text-input {
+    font-size: 1em;
+    width: 200px;
+    margin-right: 10px;
+    height: 40px;
+    border-radius: 5px;
+  }
+  
+  .Submit-button {
+    font-size: 1em;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: black;
+    width: 100px;
+    height: 50px;
+  }

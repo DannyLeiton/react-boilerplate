@@ -15,11 +15,18 @@ class App extends Component {
     }));
   };
 
+  removeCard = (cardIndex) => {
+    const { cards } = this.state;
+    cards.splice(cardIndex, 1);
+    const newCards = cards;
+    this.setState({cards: newCards});
+  }
+
   render() {
     return (
       <div className="App">
         <Form onSubmit={this.addNewCard} />
-        <CardList cards={this.state.cards} />
+        <CardList cards={this.state.cards} onRemove={this.removeCard} />
       </div>
     );
   }

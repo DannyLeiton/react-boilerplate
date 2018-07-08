@@ -4,24 +4,24 @@ import axios from 'axios';
 import './styles.css';
 
 class Form extends Component {
-    state = { userName: '', error: null, disableButton: false }
+    state = { userName: '', message: null, disableButton: false }
   
     handleSubmit = (event) => {
       event.preventDefault();
-      this.setState({ ...this.state, disableButton: true });
+      this.setState({ ...this.state, disableButton: true, message: 'Retrieving User...'});
       const { userName } = this.state
       axios.get(`https://api.github.com/users/${userName}`)
         .then(resp => {
           this.props.onSubmit(resp.data);
-          this.setState({ userName: '', error: null, disableButton: false });
+          this.setState({ userName: '', message: null, disableButton: false });
         })
         .catch(err => {
-            this.setState({userName, error: err.message, disableButton: false});
+            this.setState({userName, message: err.message, disableButton: false});
         });
     };
   
     render() {
-      const { userName, error, disableButton } = this.state;
+      const { userName, message, disableButton } = this.state;
     
       return (
         <div>
@@ -34,7 +34,7 @@ class Form extends Component {
                 <button className="Submit-button" type="submit" disabled={disableButton}>Add Card</button>
             </form>
             <div className="Error-message">
-                {error}
+                {message}
             </div>
         </div>
       );

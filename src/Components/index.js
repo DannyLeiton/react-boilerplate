@@ -1,2 +1,2 @@
-export { CardList } from './CardList';
-export { Form } from './Form';
+export { SurveyList } from './SurveyList';
+export { SurveyForm } from './SurveyForm';

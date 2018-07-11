@@ -1,32 +1,42 @@
 import React, { Component } from 'react';
-
-import { CardList, Form } from './Components';
+import axios from 'axios';
+import { SurveyList, SurveyForm } from './Components';
 
 import './App.css';
 
 class App extends Component {
   state = {
-    cards: []
+    surveys: []
   };
 
-  addNewCard = (cardInfo) => {
-    this.setState(prevState => ({
-      cards: prevState.cards.concat(cardInfo)
-    }));
-  };
-
-  removeCard = (cardIndex) => {
-    const { cards } = this.state;
-    cards.splice(cardIndex, 1);
-    const newCards = cards;
-    this.setState({cards: newCards});
+  getSurveys = () => {
+    axios.get(`http://techtestbackend.azurewebsites.net/api/surveys`)
+      .then(response => {
+          if(response && response.data) {
+              this.setState({ surveys: response.data });
+          }
+          else {
+              this.setState({ message: 'No Surveys so far' });
+          }
+      })
+      .catch(err => {
+          this.setState({ message: err.message });
+      });
   }
+
+  componentWillMount = () => {
+    this.getSurveys();
+  };
+
+  addNewSurvey = () => {
+    this.getSurveys();
+  };  
 
   render() {
     return (
       <div className="App">
-        <Form onSubmit={this.addNewCard} />
-        <CardList cards={this.state.cards} onRemove={this.removeCard} />
+        <SurveyForm onSubmit={this.addNewSurvey} />
+        <SurveyList surveys={this.state.surveys}/>
       </div>
     );
   }

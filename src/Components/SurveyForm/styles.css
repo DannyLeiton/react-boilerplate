@@ -1,12 +1,4 @@
-.Text-input {
-    font-size: 1em;
-    width: 200px;
-    margin-right: 10px;
-    height: 40px;
-    border-radius: 5px;
-  }
-  
-  .Submit-button {
+.Submit-button {
     font-size: 1em;
     color: white;
     font-weight: bold;
@@ -22,4 +14,16 @@
       font-weight: bold;
       font-size: 20px;
       text-align: center;
+  }
+
+  .question {
+    margin: 5px 0;
+  }
+  .question span {
+    display: inline-block;
+    width: 80px;
+  }
+  .question input,
+  .question textarea {
+    margin-left: 20px;
   }
